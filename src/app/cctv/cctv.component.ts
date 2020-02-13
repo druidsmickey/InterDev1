@@ -16,8 +16,8 @@ export class CctvComponent implements OnInit {
   private testbrands  : any = [];
   private brands  : any = [];
   private cctvs = [];
-  orderBrand = "value";
-  ascending = true;
+  orderBrand = "value"; //sorting
+  ascending = true; //sorting
 
   constructor(private commonService: CommonService) { }
 
