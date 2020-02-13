@@ -1,0 +1,49 @@
+<nav mat-tab-nav-bar>
+	<a mat-tab-link 
+	*ngFor="let items of cctvtabs"
+	(click)="onClick(selectedItem = items.id)">
+		{{items.menu}}
+	</a>
+</nav>
+
+<mat-form-field class="spacing">
+	<mat-label>CCTV Brand</mat-label>
+	<mat-select (selectionChange)="applyFilter($event.value)" >
+		<mat-option *ngFor="let brand of brands | orderBy:orderBrand:ascending" [value]="brand.id">
+			{{brand.value}}
+		</mat-option>
+	</mat-select>
+</mat-form-field>
+
+<mat-table [dataSource]="items" matSort>
+	<ng-container matColumnDef="Brand">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
+		<mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+	</ng-container>
+
+    <ng-container matColumnDef="Model">
+	    <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
+	    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+	</ng-container>
+
+	  <!-- Weight Column -->
+	<ng-container matColumnDef="Description">
+	  <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+	  <mat-cell *matCellDef="let element"> {{element.weight}}</mat-cell>
+	</ng-container>
+
+	  <!-- Symbol Column -->
+	<ng-container matColumnDef="Picture">
+	  <mat-header-cell *matHeaderCellDef mat-sort-header> Picture </mat-header-cell>
+	  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+	</ng-container>
+	  
+	<ng-container matColumnDef="Price">
+	  <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+	  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+	</ng-container>
+
+
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
