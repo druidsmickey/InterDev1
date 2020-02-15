@@ -1,1 +1,7 @@
-<p>admin works!</p>
+<nav mat-tab-nav-bar>
+	<a mat-tab-link 
+	*ngFor="let menu of menus"
+	(click)="onClick(selectedItem = menu.id)">
+		{{menu.item}}
+	</a>
+</nav>
