@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
+	private menus = [];
+	private selectedItem = {};
   constructor() { }
 
   ngOnInit() {
+  	this.menus = [
+		{item:"User Accounts", id:"User Accounts"},
+		{item:"MenuTabs", id:"MenuTabs"},
+		{item:"Brands", id:"Brands"},
+		{item:"Items", id:"Items"},
+        {item:"Pricing", id:"Pricing"}
+    ];
   }
 
 }
