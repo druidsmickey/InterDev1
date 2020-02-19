@@ -1,7 +1,8 @@
 <nav mat-tab-nav-bar>
 	<a mat-tab-link 
 	*ngFor="let menu of menus"
-	(click)="onClick(selectedItem = menu.id)">
+	[routerLink]="menu.link">
 		{{menu.item}}
 	</a>
 </nav>
+<router-outlet></router-outlet>
