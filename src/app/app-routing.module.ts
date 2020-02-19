@@ -10,6 +10,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { UseraccountsComponent } from './useraccounts/useraccounts.component';
 
 const routes: Routes = [
 	{path:'', component: FeaturedComponent}
@@ -26,7 +27,11 @@ const routes: Routes = [
 	,
 	{path:'LoginComponent', component: LoginComponent}
 	,
-	{path:'AdminComponent', component: AdminComponent}
+	{path:'AdminComponent', component: AdminComponent,
+		children: [
+			{path:'UserAccountsComponent', component: UseraccountsComponent}
+		]
+	}
 	];
 
 
