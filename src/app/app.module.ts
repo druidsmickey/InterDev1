@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppPipe } from './app.pipe';
+import { UseraccountsComponent } from './useraccounts/useraccounts.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AppPipe } from './app.pipe';
     ContactusComponent,
     LoginComponent,
     AdminComponent,
-    AppPipe
+    AppPipe,
+    UseraccountsComponent
   ],
   imports: [
     FormsModule,
