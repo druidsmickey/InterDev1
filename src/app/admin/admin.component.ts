@@ -12,11 +12,11 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
   	this.menus = [
-		{item:"User Accounts", id:"User Accounts"},
-		{item:"MenuTabs", id:"MenuTabs"},
-		{item:"Brands", id:"Brands"},
-		{item:"Items", id:"Items"},
-        {item:"Pricing", id:"Pricing"}
+		{item:"User Accounts", link:"UserAccountsComponent"},
+		{item:"MenuTabs", link:"MenuTabsComponent"},
+		{item:"Brands", link:"BrandsComponent"},
+		{item:"Items", link:"ItemsComponent"},
+        {item:"Pricing", link:"PricingComponent"}
     ];
   }
 
