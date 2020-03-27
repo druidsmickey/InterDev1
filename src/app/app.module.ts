@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CctvComponent } from './cctv/cctv.component';
 import { AlarmComponent } from './alarm/alarm.component';
@@ -21,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppPipe } from './app.pipe';
 import { UseraccountsComponent } from './useraccounts/useraccounts.component';
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { UseraccountsComponent } from './useraccounts/useraccounts.component';
     LoginComponent,
     AdminComponent,
     AppPipe,
-    UseraccountsComponent
+    UseraccountsComponent,
+    ItemsComponent
   ],
   imports: [
     FormsModule,
@@ -46,7 +49,8 @@ import { UseraccountsComponent } from './useraccounts/useraccounts.component';
     SharedModule,
     CommonModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
