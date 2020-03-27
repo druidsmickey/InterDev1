@@ -34,20 +34,8 @@ export class CctvComponent implements OnInit {
         {menu:"Design your System", id:"design"}
     ];
 
-    this.allitems = [
-      {brand: "Dahua", position: 1, name: 'all', weight: 1.0079, symbol: 'H'},
-      {brand: "Dahua", position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-      {brand: "Dahua", position: 3, name: 'lithium', weight: 6.941, symbol: 'Li'},
-      {brand: "Hikvision", position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-      {brand: "Hikvision", position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-      {brand: "Hikvision", position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-      {brand: "Dahua", position: 7, name: 'StandAlone', weight: 14.0067, symbol: 'N'},
-      {brand: "Dahua", position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-      {brand: "Hikvision", position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-      {brand: "Hikvision", position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-    ];
-
-    this.displayedColumns = ['Brand','Model', 'Description', 'Picture', 'Price'];
+    console.log(this.cctvs);
+    this.displayedColumns = ['Brand','Model', 'Description', 'Price'];
     this.items = this.allitems;
     this.selectedItem = "allproducts";
 
@@ -55,13 +43,12 @@ export class CctvComponent implements OnInit {
 
 
   onClick(){
-
     this.items =[];
     if (this.selectedItem == "allproducts"){
       this.items =this.allitems
     } else {
       for (var i=0; i< this.allitems.length;i++){
-        if (this.allitems[i].name == this.selectedItem){
+        if (this.allitems[i].model == this.selectedItem){
           this.items.push(this.allitems[i]);
           console.log(this.allitems[i]);
         };
@@ -80,7 +67,7 @@ export class CctvComponent implements OnInit {
         this.items =this.allitems
       } else {
         for (var i=0; i< this.allitems.length;i++){
-          if (this.allitems[i].name == this.selectedItem){
+          if (this.allitems[i].model == this.selectedItem){
             this.items.push(this.allitems[i]);
           };
         };
@@ -89,7 +76,7 @@ export class CctvComponent implements OnInit {
       console.log(filterValue);
       console.log(this.allitems);
       for (var i=0; i< this.allitems.length;i++){
-        if (this.allitems[i].name == this.selectedItem && this.allitems[i].brand == filterValue){
+        if (this.allitems[i].model == this.selectedItem && this.allitems[i].brand == filterValue){
           this.items.push(this.allitems[i]);
         } else if (this.selectedItem == "allproducts" && this.allitems[i].brand == filterValue){
           this.items.push(this.allitems[i]);
@@ -106,6 +93,8 @@ export class CctvComponent implements OnInit {
 
   getCCTVs(){
     this.commonService.getCCTVs().subscribe(
-      data => this.cctvs = data)
+      data => {this.allitems = data,
+                this.items = data
+      })
   }
 }
