@@ -18,29 +18,22 @@
 <mat-table [dataSource]="items" matSort class="spacing">
 	<ng-container matColumnDef="Brand">
 		<mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
-		<mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+		<mat-cell *matCellDef="let element"> {{element.brand}} </mat-cell>
 	</ng-container>
 
     <ng-container matColumnDef="Model">
 	    <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
-	    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+	    <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
 	</ng-container>
 
-	  <!-- Weight Column -->
 	<ng-container matColumnDef="Description">
 	  <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
-	  <mat-cell *matCellDef="let element"> {{element.weight}}</mat-cell>
+	  <mat-cell *matCellDef="let element"> {{element.type}}</mat-cell>
 	</ng-container>
-
-	  <!-- Symbol Column -->
-	<ng-container matColumnDef="Picture">
-	  <mat-header-cell *matHeaderCellDef mat-sort-header> Picture </mat-header-cell>
-	  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-	</ng-container>
-	  
+ 
 	<ng-container matColumnDef="Price">
 	  <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
-	  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+	  <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
 	</ng-container>
 
 

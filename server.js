@@ -33,6 +33,15 @@ db.once('open', function callback () {
       })
     })
 
+
+    app.post('/addcctvs',function(req,res){
+      var param = new CCTVs(req.body);
+      param.save(function(err,obj){
+        if(err) return console.error(err);
+        res.status(200).json(obj);
+      })
+    })
+
 	app.get('/*', function(req, res) {
 		res.sendFile(__dirname + '/dist/intersky/index.html');
 	});

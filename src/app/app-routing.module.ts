@@ -11,6 +11,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UseraccountsComponent } from './useraccounts/useraccounts.component';
+import { ItemsComponent } from './items/items.component';
 
 const routes: Routes = [
 	{path:'', component: FeaturedComponent}
@@ -29,7 +30,9 @@ const routes: Routes = [
 	,
 	{path:'AdminComponent', component: AdminComponent,
 		children: [
-			{path:'UserAccountsComponent', component: UseraccountsComponent}
+			{path:'UserAccountsComponent', component: UseraccountsComponent},
+			{path:'ItemsComponent', component: ItemsComponent}
+
 		]
 	}
 	];

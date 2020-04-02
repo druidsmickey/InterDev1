@@ -21,4 +21,7 @@ export class CommonService {
         return this.http.get('/cctv').pipe(map(res => res.json()));
     }
 
+    addCCTVs(cctvs) {
+    	return this.http.post("/addcctvs", JSON.stringify(cctvs),this.options);
+    }
 }
