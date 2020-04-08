@@ -8,7 +8,7 @@ import { CommonService } from '../common.service';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-    
+
     private items = [];
     private myForm : FormGroup;
     private brand = new FormControl('',Validators.required);
@@ -50,12 +50,12 @@ export class ItemsComponent implements OnInit {
 
 	addCCTVs(){
 		this.commonService.addCCTVs(this.myForm.value).subscribe(
-			res => {
-				var newItem = res.json();
+			(res: any) => {
+				let newItem = res.json();
 				this.items.push(newItem);
 				this.myForm.reset();
 			},
-			error => console.log(error)
+			(error: any) => console.log(error)
 		);
 		console.log(this.myForm.value);
 	}

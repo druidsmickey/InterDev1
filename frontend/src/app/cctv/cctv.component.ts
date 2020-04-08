@@ -9,10 +9,10 @@ import { CommonService } from '../common.service';
 
 export class CctvComponent implements OnInit {
 	private cctvtabs = [];
-  private allitems = [];
+  private allitems : any = [];
   private displayedColumns = [];
   private selectedItem = {};
-  private items = [];
+  private items : any = [];
   private testbrands  : any = [];
   private brands  : any = [];
   private cctvs = [];
@@ -26,12 +26,12 @@ export class CctvComponent implements OnInit {
     this.getCCTVs();
 
   	this.cctvtabs = [
-    		{menu:"All products", id:"allproducts"},
-    		{menu:"Stand Alone", id:"StandAlone"},
-    		{menu:"720P", id:"720P"},
-    		{menu:"1080P", id:"1080P"},
-        {menu:"Kits", id:"Kits"},
-        {menu:"Design your System", id:"design"}
+      {menu:"All products", id:"allproducts"},
+      {menu:"Stand Alone", id:"StandAlone"},
+      {menu:"720P", id:"720P"},
+      {menu:"1080P", id:"1080P"},
+      {menu:"Kits", id:"Kits"},
+      {menu:"Design your System", id:"design"}
     ];
 
     console.log(this.cctvs);
@@ -42,13 +42,13 @@ export class CctvComponent implements OnInit {
   }
 
 
-  onClick(){
-    this.items =[];
-    if (this.selectedItem == "allproducts"){
-      this.items =this.allitems
+  onClick() {
+    this.items = [];
+    if (this.selectedItem == "allproducts") {
+      this.items =this.allitems;
     } else {
-      for (var i=0; i< this.allitems.length;i++){
-        if (this.allitems[i].model == this.selectedItem){
+      for (let i = 0; i < this.allitems.length; i++) {
+        if (this.allitems[i].model == this.selectedItem) {
           this.items.push(this.allitems[i]);
           console.log(this.allitems[i]);
         };
@@ -57,45 +57,45 @@ export class CctvComponent implements OnInit {
     console.log(this.items);
   }
 
-
-
   applyFilter(filterValue:string) {
     console.log(this.selectedItem);
-    this.items =[];
-    if (filterValue == "Allbrands"){
-      if (this.selectedItem == "allproducts"){
-        this.items =this.allitems
+    this.items = [];
+    if (filterValue == "Allbrands") {
+      if (this.selectedItem == "allproducts") {
+        this.items =this.allitems;
       } else {
-        for (var i=0; i< this.allitems.length;i++){
-          if (this.allitems[i].model == this.selectedItem){
+        for (let i = 0; i< this.allitems.length; i++) {
+          if (this.allitems[i].model == this.selectedItem) {
             this.items.push(this.allitems[i]);
           };
         };
       }
-    }else{
+    } else {
       console.log(filterValue);
       console.log(this.allitems);
-      for (var i=0; i< this.allitems.length;i++){
-        if (this.allitems[i].model == this.selectedItem && this.allitems[i].brand == filterValue){
+      for (let i = 0; i < this.allitems.length; i++) {
+        if (this.allitems[i].model == this.selectedItem && this.allitems[i].brand == filterValue) {
           this.items.push(this.allitems[i]);
-        } else if (this.selectedItem == "allproducts" && this.allitems[i].brand == filterValue){
+        } else if (this.selectedItem == "allproducts" && this.allitems[i].brand == filterValue) {
           this.items.push(this.allitems[i]);
         };
       };
     }
   }
 
-  getBrands(){
+  getBrands() {
     this.commonService.getBrands().subscribe(
       data => this.brands = data
-      )
+    );
   }
 
-  getCCTVs(){
+  getCCTVs() {
     this.commonService.getCCTVs().subscribe(
-      data => {this.allitems = data,
-                this.items = data
-                console.log('data', data);
-      })
+      data => {
+        this.allitems = data;
+        this.items = data;
+        console.log('data', data);
+      }
+    );
   }
 }

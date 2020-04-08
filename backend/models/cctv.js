@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-var cctvSchema = mongoose.Schema({
+const cctvSchema = mongoose.Schema({
 	brand: String,
 	model: String,
 	quality: String,
@@ -17,6 +17,6 @@ var cctvSchema = mongoose.Schema({
 	featured: Number
 });
 
-var CCTVs = mongoose.model('CCTVs',cctvSchema);
+const CCTVs = mongoose.model('CCTVs', cctvSchema);
 
-module.exports = CCTVs;
+export default CCTVs;

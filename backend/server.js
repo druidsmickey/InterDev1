@@ -1,54 +1,64 @@
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var mongo = require('mongoose');
+import express from 'express';
+import cors from 'cors';
+// import path from 'path';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
 
-var app = express();
+import CCTVs from './models/cctv.js';
+import Brands from './models/brands.js';
 
-app.use('/', express.static(__dirname + '/dist/intersky'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+const app = express();
+const router = express.Router();
 
-mongo.connect('mongodb://localhost:27017/test',{ useNewUrlParser: true });
-var db = mongo.connection;
+app.use(cors());
+app.use(bodyParser.json());
 
-// Models
-var Brands = require('./brands.model.js');
-var CCTVs = require('./cctv.model.js');
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true });
+const connection = mongoose.connection;
 
-db.once('open', function callback () {
-  console.log("connected");
-
-  	app.get('/brand',function(req,res){
-  		Brands.find({},function(err,docs) {
-  			if (err) return console.error(err);
-  			res.json(docs);
-  		})
-  	})
-
-    app.get('/cctv',function(req,res){
-      CCTVs.find({},function(err,docs) {
-        if (err) return console.error(err);
-        res.json(docs);
-      })
-    })
-
-
-    app.post('/addcctvs',function(req,res){
-      console.log('here');
-      var param = new CCTVs(req.body);
-      param.save(function(err,obj){
-        if(err) return console.error(err);
-        res.status(200).json(obj);
-      })
-    })
-
-	app.get('/*', function(req, res) {
-		res.sendFile(__dirname + '/dist/intersky/index.html');
-	});
-
-	app.listen(8080,function(){
-		console.log('Listening o port 8080')
-	})
+connection.once('open', () => {
+  console.log('MongoDB database connection established successfully!');
 });
 
+router.route('/brand').get((req, res) => {
+  Brands.find({}, (err, docs) => {
+    if (err)
+      console.error(err);
+    else
+      res.json(docs);
+  });
+});
+
+router.route('/cctv').get((req, res) => {
+  CCTVs.find({}, (err, docs) => {
+    if (err)
+      console.error(err);
+    else
+      res.json(docs);
+  });
+});
+
+router.route('/addcctvs').post((req, res) => {
+  var param = new CCTVs(req.body);
+  param.save((err, obj) => {
+    if(err)
+      console.error(err);
+    else
+      console.log('obj', obj);
+      res.status(200).json(obj);
+  });
+});
+
+// router.route('/*').get((req, res) => {
+//   res.sendFile(__dirname + '/dist/intersky/index.html');
+// });
+
+app.use('/', router);
+
+app.listen(8080, () => {
+  console.log('Listening o port 8080');
+});
+
+// app.use('/', express.static(__dirname + '/dist/intersky'));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
