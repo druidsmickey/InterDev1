@@ -35,6 +35,7 @@ db.once('open', function callback () {
 
 
     app.post('/addcctvs',function(req,res){
+      console.log('here');
       var param = new CCTVs(req.body);
       param.save(function(err,obj){
         if(err) return console.error(err);

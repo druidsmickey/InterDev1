@@ -95,6 +95,7 @@ export class CctvComponent implements OnInit {
     this.commonService.getCCTVs().subscribe(
       data => {this.allitems = data,
                 this.items = data
+                console.log('data', data);
       })
   }
 }

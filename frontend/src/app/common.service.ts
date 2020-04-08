@@ -10,7 +10,7 @@ export class CommonService {
 
     private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
     private options = new RequestOptions({ headers: this.headers });
- 	
+
  	constructor(private http: Http) { }
 
     getBrands() {
@@ -22,6 +22,7 @@ export class CommonService {
     }
 
     addCCTVs(cctvs) {
+      console.log('common.service', cctvs);
     	return this.http.post("/addcctvs", JSON.stringify(cctvs),this.options);
     }
 }
