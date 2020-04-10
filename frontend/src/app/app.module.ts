@@ -11,7 +11,6 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-import { CctvComponent } from './cctv/cctv.component';
 import { AlarmComponent } from './alarm/alarm.component';
 import { AccesscontrolComponent } from './accesscontrol/accesscontrol.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
@@ -30,7 +29,6 @@ import { ItemsComponent } from './items/items.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CctvComponent,
     AlarmComponent,
     AccesscontrolComponent,
     AboutusComponent,

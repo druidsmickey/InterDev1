@@ -11,6 +11,11 @@ const routes: Routes = [
         path: '',
         loadChildren: () =>
           import('./modules/featured/featured.module').then(m => m.FeaturedModule)
+      },
+      {
+        path: 'CCTV',
+        loadChildren: () =>
+          import('./modules/cctv/cctv.module').then(m => m.CctvModule)
       }
     ]
 

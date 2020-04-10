@@ -14,4 +14,4 @@ import { FeaturedComponent } from './page/featured/featured.component';
   ]
 })
 
-export class FeaturedModule { }
+export class FeaturedModule {}

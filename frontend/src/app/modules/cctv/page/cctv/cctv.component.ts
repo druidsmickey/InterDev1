@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { CommonService } from '../common.service';
+import { CommonService } from '../../../../common.service';
 
 @Component({
   selector: 'app-cctv',
