@@ -19,7 +19,7 @@ export class CctvComponent implements OnInit {
   orderBrand = "value"; //sorting
   ascending = true; //sorting
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService) {}
 
   ngOnInit() {
     this.getBrands();
@@ -40,7 +40,6 @@ export class CctvComponent implements OnInit {
     this.selectedItem = "allproducts";
 
   }
-
 
   onClick() {
     this.items = [];

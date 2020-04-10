@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
 	username: string;
 	password: string;
-  
+
   ngOnInit() {
   }
 
   login() : void {
-    if(this.username == 'admin' && this.password == 'admin'){
+    if (this.username == 'admin' && this.password == 'admin') {
      this.router.navigate(["AdminComponent"]);
-    }else {
+    } else {
       alert("Invalid credentials");
     }
   }

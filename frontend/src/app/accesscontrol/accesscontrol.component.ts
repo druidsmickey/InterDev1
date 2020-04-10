@@ -5,9 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './accesscontrol.component.html',
   styleUrls: ['./accesscontrol.component.css']
 })
+
 export class AccesscontrolComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

@@ -56,4 +56,4 @@ import { ItemsComponent } from './items/items.component';
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {}

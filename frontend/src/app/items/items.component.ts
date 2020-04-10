@@ -7,30 +7,30 @@ import { CommonService } from '../common.service';
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.css']
 })
+
 export class ItemsComponent implements OnInit {
 
-    private items = [];
-    private myForm : FormGroup;
-    private brand = new FormControl('',Validators.required);
-	private model = new FormControl('',Validators.required);
-    private quality = new FormControl('',Validators.required);
-	private type = new FormControl('',Validators.required);
-    private lens = new FormControl('',Validators.required);
-	private lenstype = new FormControl('',Validators.required);
-    private transmission = new FormControl('',Validators.required);
-	private protection = new FormControl('',Validators.required);
-    private ir = new FormControl('',Validators.required);
-	private audioin = new FormControl('',Validators.required);
-    private powersupply = new FormControl('',Validators.required);
-	private link = new FormControl('',Validators.required);
-    private price = new FormControl('',Validators.required);
-	private featured = new FormControl('',Validators.required);
+  private items = [];
+  private myForm : FormGroup;
+  private brand = new FormControl('',Validators.required);
+  private model = new FormControl('',Validators.required);
+  private quality = new FormControl('',Validators.required);
+  private type = new FormControl('',Validators.required);
+  private lens = new FormControl('',Validators.required);
+  private lenstype = new FormControl('',Validators.required);
+  private transmission = new FormControl('',Validators.required);
+  private protection = new FormControl('',Validators.required);
+  private ir = new FormControl('',Validators.required);
+  private audioin = new FormControl('',Validators.required);
+  private powersupply = new FormControl('',Validators.required);
+  private link = new FormControl('',Validators.required);
+  private price = new FormControl('',Validators.required);
+  private featured = new FormControl('',Validators.required);
 
-	constructor(private commonService: CommonService,
-				private formBuilder: FormBuilder) { }
+	constructor(private commonService: CommonService, private formBuilder: FormBuilder) {}
 
 	ngOnInit() {
-    	this.myForm = this.formBuilder.group({
+    this.myForm = this.formBuilder.group({
 			brand: this.brand,
 			model: this.model,
 			quality: this.quality,
@@ -45,10 +45,10 @@ export class ItemsComponent implements OnInit {
 			link: this.link,
 			price: this.price,
 			featured: this.featured
-    	});
+    });
 	}
 
-	addCCTVs(){
+	addCCTVs() {
 		this.commonService.addCCTVs(this.myForm.value).subscribe(
 			(res: any) => {
 				let newItem = res.json();

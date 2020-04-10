@@ -14,7 +14,7 @@ export class CommonService {
 
   uri = 'http://localhost:8080';
 
- 	constructor(private http: HttpClient) { }
+ 	constructor(private http: HttpClient) {}
 
   getBrands() {
     return this.http.get(`${this.uri}/brand`);

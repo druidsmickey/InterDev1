@@ -1,7 +1,5 @@
 <nav mat-tab-nav-bar>
-	<a mat-tab-link 
-	*ngFor="let menu of menus"
-	[routerLink]="menu.link">
+    <a mat-tab-link *ngFor="let menu of menus" [routerLink]="menu.link">
 		{{menu.item}}
 	</a>
 </nav>

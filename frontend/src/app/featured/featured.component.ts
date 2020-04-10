@@ -5,9 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './featured.component.html',
   styleUrls: ['./featured.component.css']
 })
+
 export class FeaturedComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

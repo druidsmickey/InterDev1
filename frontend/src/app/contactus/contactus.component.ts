@@ -5,18 +5,19 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './contactus.component.html',
   styleUrls: ['./contactus.component.css']
 })
+
 export class ContactusComponent implements OnInit {
   name : string;
   email : string;
   message : string;
-  constructor() { }
+
+  constructor() {}
 
   ngOnInit() {
   }
 
 	processForm(){
-		    const allInfo = `My name is ${this.name}. My email is ${this.email}. My message is ${this.message}`;
-	console.log(this.name);
+		const allInfo = `My name is ${this.name}. My email is ${this.email}. My message is ${this.message}`;
+	  console.log(this.name);
 	}
-
 }

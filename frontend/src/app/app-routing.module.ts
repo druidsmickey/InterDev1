@@ -32,14 +32,13 @@ const routes: Routes = [
 		children: [
 			{path:'UserAccountsComponent', component: UseraccountsComponent},
 			{path:'ItemsComponent', component: ItemsComponent}
-
 		]
 	}
-	];
-
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {}

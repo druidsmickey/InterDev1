@@ -5,9 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './useraccounts.component.html',
   styleUrls: ['./useraccounts.component.css']
 })
+
 export class UseraccountsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
