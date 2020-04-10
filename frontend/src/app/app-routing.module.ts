@@ -26,6 +26,11 @@ const routes: Routes = [
         path: 'AccessControl',
         loadChildren: () =>
           import('./modules/accesscontrol/accesscontrol.module').then(m => m.AccesscontrolModule)
+      },
+      {
+        path: 'AboutUs',
+        loadChildren: () =>
+          import('./modules/aboutus/aboutus.module').then(m => m.AboutusModule)
       }
     ]
 
