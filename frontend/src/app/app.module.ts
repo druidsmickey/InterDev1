@@ -11,7 +11,6 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-import { ContactusComponent } from './contactus/contactus.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -26,7 +25,6 @@ import { ItemsComponent } from './items/items.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ContactusComponent,
     LoginComponent,
     AdminComponent,
     AppPipe,
