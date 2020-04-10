@@ -21,6 +21,11 @@ const routes: Routes = [
         path: 'Alarm',
         loadChildren: () =>
           import('./modules/alarm/alarm.module').then(m => m.AlarmModule)
+      },
+      {
+        path: 'AccessControl',
+        loadChildren: () =>
+          import('./modules/accesscontrol/accesscontrol.module').then(m => m.AccesscontrolModule)
       }
     ]
 
