@@ -1,44 +1,62 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { AppComponent } from './app.component';
-import { CctvComponent } from './cctv/cctv.component';
-import { AlarmComponent } from './alarm/alarm.component';
-import { FeaturedComponent } from './featured/featured.component';
-import { AccesscontrolComponent } from './accesscontrol/accesscontrol.component';
-import { AboutusComponent } from './aboutus/aboutus.component';
-import { ContactusComponent } from './contactus/contactus.component';
-import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
-import { UseraccountsComponent } from './useraccounts/useraccounts.component';
-import { ItemsComponent } from './items/items.component';
+import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 const routes: Routes = [
-	{path:'', component: FeaturedComponent}
-	,
-	{path:'CCTV', component: CctvComponent}
-	,
-	{path:'Alarm', component: AlarmComponent}
-	,
-	{path:'AccessControl', component: AccesscontrolComponent}
-	,
-	{path:'AboutUs', component: AboutusComponent}
-	,
-	{path:'ContactUs', component: ContactusComponent}
-	,
-	{path:'LoginComponent', component: LoginComponent}
-	,
-	{path:'AdminComponent', component: AdminComponent,
-		children: [
-			{path:'UserAccountsComponent', component: UseraccountsComponent},
-			{path:'ItemsComponent', component: ItemsComponent}
-		]
-	}
+  {
+    path: '',
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./modules/featured/featured.module').then(m => m.FeaturedModule)
+      },
+      {
+        path: 'CCTV',
+        loadChildren: () =>
+          import('./modules/cctv/cctv.module').then(m => m.CctvModule)
+      },
+      {
+        path: 'Alarm',
+        loadChildren: () =>
+          import('./modules/alarm/alarm.module').then(m => m.AlarmModule)
+      },
+      {
+        path: 'AccessControl',
+        loadChildren: () =>
+          import('./modules/accesscontrol/accesscontrol.module').then(m => m.AccesscontrolModule)
+      },
+      {
+        path: 'AboutUs',
+        loadChildren: () =>
+          import('./modules/aboutus/aboutus.module').then(m => m.AboutusModule)
+      },
+      {
+        path: 'ContactUs',
+        loadChildren: () =>
+          import('./modules/contactus/contactus.module').then(m => m.ContactusModule)
+      },
+      {
+        path: 'AdminComponent',
+        loadChildren: () =>
+          import('./modules/admin/admin.module').then(m => m.AdminModule)
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: AuthLayoutComponent,
+    loadChildren: () =>
+      import('./modules/login/login.module').then(m => m.LoginModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 
 export class AppRoutingModule {}
