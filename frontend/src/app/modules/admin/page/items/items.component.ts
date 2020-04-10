@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
-import { CommonService } from '../common.service';
+import { CommonService } from '../../../../common.service';
 
 @Component({
   selector: 'app-items',

@@ -15,23 +15,23 @@ export class AdminComponent implements OnInit {
   	this.menus = [
   		{
         item: 'User Accounts',
-        link: '/UserAccountsComponent'
+        link: 'UserAccountsComponent'
       },
   		{
         item: 'MenuTabs',
-        link: '/MenuTabsComponent'
+        link: 'MenuTabsComponent'
       },
   		{
         item: 'Brands',
-        link: '/BrandsComponent'
+        link: 'BrandsComponent'
       },
   		{
         item: 'Items',
-        link: '/ItemsComponent'
+        link: 'ItemsComponent'
       },
       {
         item: 'Pricing',
-        link: '/PricingComponent'
+        link: 'PricingComponent'
       }
     ];
   }
