@@ -15,7 +15,6 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AppPipe } from './app.pipe';
-import { UseraccountsComponent } from './useraccounts/useraccounts.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { UseraccountsComponent } from './useraccounts/useraccounts.component';
     HeaderComponent,
     FooterComponent,
     AuthLayoutComponent,
-    AppPipe,
-    UseraccountsComponent
+    AppPipe
   ],
   imports: [
     FormsModule,
