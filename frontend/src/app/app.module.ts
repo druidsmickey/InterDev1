@@ -10,28 +10,28 @@ import { SharedModule } from './shared/shared.module';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { CctvComponent } from './cctv/cctv.component';
 import { AlarmComponent } from './alarm/alarm.component';
-import { FeaturedComponent } from './featured/featured.component';
 import { AccesscontrolComponent } from './accesscontrol/accesscontrol.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 import { AppPipe } from './app.pipe';
 import { UseraccountsComponent } from './useraccounts/useraccounts.component';
 import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
+    ContentLayoutComponent,
     AppComponent,
     HeaderComponent,
     FooterComponent,
     CctvComponent,
     AlarmComponent,
-    FeaturedComponent,
     AccesscontrolComponent,
     AboutusComponent,
     ContactusComponent,
