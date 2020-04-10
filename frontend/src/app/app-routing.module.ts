@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 const routes: Routes = [
   {
@@ -36,9 +37,19 @@ const routes: Routes = [
         path: 'ContactUs',
         loadChildren: () =>
           import('./modules/contactus/contactus.module').then(m => m.ContactusModule)
+      },
+      {
+        path: 'AdminComponent',
+        loadChildren: () =>
+          import('./modules/admin/admin.module').then(m => m.AdminModule)
       }
     ]
-
+  },
+  {
+    path: 'login',
+    component: AuthLayoutComponent,
+    loadChildren: () =>
+      import('./modules/login/login.module').then(m => m.LoginModule)
   }
 ];
 

@@ -11,8 +11,7 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
-import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AppPipe } from './app.pipe';
@@ -25,8 +24,7 @@ import { ItemsComponent } from './items/items.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
-    AdminComponent,
+    AuthLayoutComponent,
     AppPipe,
     UseraccountsComponent,
     ItemsComponent
