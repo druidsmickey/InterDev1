@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const cctvSchema = mongoose.Schema({
 	brand: String,
@@ -17,6 +17,4 @@ const cctvSchema = mongoose.Schema({
 	featured: Number
 });
 
-const CCTVs = mongoose.model('CCTVs', cctvSchema);
-
-export default CCTVs;
+module.exports = mongoose.model('cctvs', cctvSchema);
