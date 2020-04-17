@@ -32,6 +32,10 @@ export class CommonService {
     // return this.http.post(`${this.uri}/addcctvs`, JSON.stringify(cctvs), this.options);
   }
 
+  addRecorders(recoders) {
+    console.log('common.service addRecorders', recoders);
+    return this.http.post(`${this.uri}/data/addrecorders`, recoders);
+  }
 
   login(auth) {
     console.log('common.service login', auth);
