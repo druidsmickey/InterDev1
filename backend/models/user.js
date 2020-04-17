@@ -30,11 +30,11 @@ User.statics.findOneByUsername = function(username) {
     }).exec();
 }
 
-User.statics.findOneByEmail = function(email) {
-  return this.findOne({
-      email
-  }).exec();
-}
+// User.statics.findOneByEmail = function(email) {
+//   return this.findOne({
+//       email
+//   }).exec();
+// }
 
 User.methods.verify = function(password) {
     const encrypted = crypto.createHmac('sha1', config.secret)

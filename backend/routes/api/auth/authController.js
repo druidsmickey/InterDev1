@@ -3,10 +3,11 @@ const User = require('../../../models/user');
 
 exports.register = (req, res) => {
     const { username, email, password } = req.body;
+    console.log('auth credential', req, username, email, password);
     let newUser = null;
 
     const create = (user) => {
-        if(user) {
+        if (user) {
             throw new Error('username exists');
         } else {
             return User.create(username, email, password);
@@ -19,7 +20,7 @@ exports.register = (req, res) => {
     }
 
     const assign = (count) => {
-        if(count === 1) {
+        if (count === 1) {
             return newUser.assignAdmin();
         } else {
             return Promise.resolve(false);
@@ -40,12 +41,12 @@ exports.register = (req, res) => {
     }
 
     User.findOneByUsername(username)
-    .findOneByEmail(email)
-    .then(create)
-    .then(count)
-    .then(assign)
-    .then(respond)
-    .catch(onError);
+        // .findOneByEmail(email)
+        .then(create)
+        .then(count)
+        .then(assign)
+        .then(respond)
+        .catch(onError);
 }
 
 exports.test = (req, res) => {
@@ -59,10 +60,10 @@ exports.login = (req, res) => {
     const secret = req.app.get('jwt-secret');
 
     const check = (user) => {
-        if(!user) {sss
+        if (!user) {sss
             throw new Error('login failed');
         } else {
-            if(user.verify(password)) {
+            if (user.verify(password)) {
                 const p = new Promise((resolve, reject) => {
                     jwt.sign(
                         {
@@ -97,8 +98,7 @@ exports.login = (req, res) => {
     }
 
     User.findOneByUsername(username)
-    .then(check)
-    .then(respond)
-    .catch(onError);
-
+        .then(check)
+        .then(respond)
+        .catch(onError);
 }

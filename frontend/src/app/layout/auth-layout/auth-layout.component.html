@@ -1,3 +1,11 @@
-<div class="auth-container">
-    <router-outlet></router-outlet>
+<div [class]="theme">
+    <div class="mat-app-background">
+        <app-header></app-header>
+
+        <div class="auth-container">
+            <router-outlet></router-outlet>
+        </div>
+
+        <app-footer></app-footer>
+    </div>
 </div>

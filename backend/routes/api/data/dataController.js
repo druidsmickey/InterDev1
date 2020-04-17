@@ -3,29 +3,32 @@ const Brands = require('../../../models/brands.js');
 
 exports.brand = (req, res) => {
   Brands.find({}, (err, docs) => {
-    if (err)
+    if (err) {
       console.error(err);
-    else
+    } else {
       res.json(docs);
+    }
   });
 }
 
 exports.cctv = (req, res) => {
   CCTVs.find({}, (err, docs) => {
-    if (err)
+    if (err) {
       console.error(err);
-    else
+    } else {
       res.json(docs);
+    }
   });
 }
 
 exports.addcctvs = (req, res) => {
   var param = new CCTVs(req.body);
   param.save((err, obj) => {
-    if(err)
+    if (err) {
       console.error(err);
-    else
+    } else {
       console.log('obj', obj);
       res.status(200).json(obj);
+    }
   });
 }

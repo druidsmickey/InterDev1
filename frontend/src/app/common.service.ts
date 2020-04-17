@@ -17,16 +17,29 @@ export class CommonService {
  	constructor(private http: HttpClient) {}
 
   getBrands() {
+    console.log('common.service getBrands');
     return this.http.get(`${this.uri}/data/brand`);
   }
 
   getCCTVs() {
+    console.log('common.service getCCTVs');
     return this.http.get(`${this.uri}/data/cctv`);
   }
 
   addCCTVs(cctvs) {
-    console.log('common.service', cctvs);
+    console.log('common.service addCCTV', cctvs);
     return this.http.post(`${this.uri}/data/addcctvs`, cctvs);
     // return this.http.post(`${this.uri}/addcctvs`, JSON.stringify(cctvs), this.options);
+  }
+
+
+  login(auth) {
+    console.log('common.service login', auth);
+    return this.http.post(`${this.uri}/auth/login`, auth);
+  }
+
+  register(auth) {
+    console.log('common.service register', auth);
+    return this.http.post(`${this.uri}/auth/register`, auth);
   }
 }
