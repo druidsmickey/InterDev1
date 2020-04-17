@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { CommonService } from '../../../../common.service';
+import  *  as  cctvs  from  './cctv.json';
 
 @Component({
   selector: 'app-items',
@@ -10,6 +11,7 @@ import { CommonService } from '../../../../common.service';
 
 export class ItemsComponent implements OnInit {
 
+  private testItems = [];
   private items = [];
   private myForm : FormGroup;
   private brand = new FormControl('',Validators.required);
@@ -45,6 +47,28 @@ export class ItemsComponent implements OnInit {
 			link: this.link,
 			price: this.price,
 			featured: this.featured
+    });
+    this.testItems = cctvs.default;
+    this.testItems.map(item => {
+      if (item.hddcapacity) {
+        this.commonService.addRecorders(item).subscribe(
+          (res: any) => {
+            console.log('test addrecorders', res);
+          },
+          (error: any) => {
+            console.log('test addrecorders error', error);
+          }
+        );
+      } else {
+        this.commonService.addCCTVs(item).subscribe(
+          (res: any) => {
+            console.log('test addCCTVs', res);
+          },
+          (error: any) => {
+            console.log('test addCCTVs error', error);
+          }
+        );
+      }
     });
 	}
 
