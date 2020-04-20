@@ -26,6 +26,11 @@ export class CommonService {
     return this.http.get(`${this.uri}/data/cctv`);
   }
 
+  getRecorders() {
+    console.log('common.service getRecorders');
+    return this.http.get(`${this.uri}/data/recorder`);
+  }
+
   addCCTVs(cctvs) {
     console.log('common.service addCCTV', cctvs);
     return this.http.post(`${this.uri}/data/addcctvs`, cctvs);

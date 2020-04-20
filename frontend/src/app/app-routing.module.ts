@@ -19,6 +19,11 @@ const routes: Routes = [
           import('./modules/cctv/cctv.module').then(m => m.CctvModule)
       },
       {
+        path: 'Recorder',
+        loadChildren: () =>
+          import('./modules/recorder/recorder.module').then(m => m.RecorderModule)
+      },
+      {
         path: 'Alarm',
         loadChildren: () =>
           import('./modules/alarm/alarm.module').then(m => m.AlarmModule)

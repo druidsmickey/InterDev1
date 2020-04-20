@@ -2,20 +2,20 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CommonService } from '../../../../common.service';
 
 @Component({
-  selector: 'app-cctv',
-  templateUrl: './cctv.component.html',
-  styleUrls: ['./cctv.component.css']
+  selector: 'app-recorder',
+  templateUrl: './recorder.component.html',
+  styleUrls: ['./recorder.component.css']
 })
 
-export class CctvComponent implements OnInit {
-	private cctvtabs = [];
+export class RecorderComponent implements OnInit {
+	// private recordertabs = [];
   private allitems : any = [];
   private displayedColumns = [];
   private selectedItem = {};
   private items : any = [];
   private testbrands  : any = [];
   private brands  : any = [];
-  private cctvs = [];
+  private recorders = [];
   orderBrand = "value"; //sorting
   ascending = true; //sorting
 
@@ -23,19 +23,19 @@ export class CctvComponent implements OnInit {
 
   ngOnInit() {
     this.getBrands();
-    this.getCCTVs();
+    this.getRecorders();
 
-  	this.cctvtabs = [
-      {menu:"All products", id:"allproducts"},
-      {menu:"Stand Alone", id:"StandAlone"},
-      {menu:"720P", id:"720P"},
-      {menu:"1080P", id:"1080P"},
-      {menu:"Kits", id:"Kits"},
-      {menu:"Design your System", id:"design"}
-    ];
+  	// this.recordertabs = [
+    //   {menu:"All products", id:"allproducts"},
+    //   {menu:"Stand Alone", id:"StandAlone"},
+    //   {menu:"720P", id:"720P"},
+    //   {menu:"1080P", id:"1080P"},
+    //   {menu:"Kits", id:"Kits"},
+    //   {menu:"Design your System", id:"design"}
+    // ];
 
-    console.log(this.cctvs);
-    this.displayedColumns = ['Brand','Model', 'Quality', 'Transmission' ,'Description', 'Price'];
+    console.log(this.recorders);
+    this.displayedColumns = ['Brand','Model', 'Price'];
     this.items = this.allitems;
     this.selectedItem = "allproducts";
 
@@ -88,8 +88,8 @@ export class CctvComponent implements OnInit {
     );
   }
 
-  getCCTVs() {
-    this.commonService.getCCTVs().subscribe(
+  getRecorders() {
+    this.commonService.getRecorders().subscribe(
       data => {
         this.allitems = data;
         this.items = data;
