@@ -11,7 +11,7 @@ export class CctvComponent implements OnInit {
 	private cctvtabs = [];
   private allitems : any = [];
   private displayedColumns = [];
-  private selectedItem = {};
+  private selectedItem: any = {};
   private items : any = [];
   private testbrands  : any = [];
   private brands  : any = [];
@@ -26,65 +26,93 @@ export class CctvComponent implements OnInit {
     this.getCCTVs();
 
   	this.cctvtabs = [
-      {menu:"All products", id:"allproducts"},
-      {menu:"Stand Alone", id:"StandAlone"},
-      {menu:"720P", id:"720P"},
-      {menu:"1080P", id:"1080P"},
-      {menu:"Kits", id:"Kits"},
-      {menu:"Design your System", id:"design"}
+      { menu: 'All products', id: 'allproducts' },
+      { menu: 'Stand Alone', id: 'StandAlone' },
+      { menu: '720P', id: '720P' },
+      { menu: '1080P', id: '1080P' },
+      { menu: 'Kits', id: 'Kits' },
+      { menu: 'Design your System', id: 'design'}
     ];
 
     console.log(this.cctvs);
-    this.displayedColumns = ['Brand','Model', 'Quality', 'Transmission' ,'Description', 'Price'];
-    this.items = this.allitems;
-    this.selectedItem = "allproducts";
+    this.displayedColumns = ['Brand', 'Model', 'Quality', 'Transmission', 'Description', 'Price'];
+    this.items = this.allitems.slice();
+    this.selectedItem = 'allproducts';
 
   }
 
   onClick() {
     this.items = [];
-    if (this.selectedItem == "allproducts") {
-      this.items =this.allitems;
+    if (this.selectedItem == 'allproducts') {
+      this.items = this.allitems.slice();
     } else {
-      for (let i = 0; i < this.allitems.length; i++) {
-        if (this.allitems[i].model == this.selectedItem) {
-          this.items.push(this.allitems[i]);
-          console.log(this.allitems[i]);
-        };
-      };
+      if (this.selectedItem == 'StandAlone') {
+        for (let i = 0; i < this.allitems.length; i++) {
+          if (this.allitems[i].type == 'Stand Alone') {
+            this.items.push(this.allitems[i]);
+          };
+        }
+      } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
+        for (let i = 0; i < this.allitems.length; i++) {
+          if (this.allitems[i].quality.toLowerCase() == this.selectedItem.toLowerCase()) {
+            this.items.push(this.allitems[i]);
+          };
+        }
+      }
     }
-    console.log(this.items);
   }
 
   applyFilter(filterValue:string) {
-    console.log(this.selectedItem);
     this.items = [];
-    if (filterValue == "Allbrands") {
-      if (this.selectedItem == "allproducts") {
-        this.items =this.allitems;
-      } else {
-        for (let i = 0; i< this.allitems.length; i++) {
-          if (this.allitems[i].model == this.selectedItem) {
+    if (filterValue !== 'allbrands') {
+      if (this.selectedItem == 'allproducts') {
+        for (let i = 0; i < this.allitems.length; i++) {
+          if (this.allitems[i].brand.toLowerCase() == filterValue.toLowerCase()) {
             this.items.push(this.allitems[i]);
           };
-        };
+        }
+      } else {
+        if (this.selectedItem == 'StandAlone') {
+          for (let i = 0; i < this.allitems.length; i++) {
+            if (this.allitems[i].type == 'Stand Alone' && this.allitems[i].brand.toLowerCase() == filterValue.toLowerCase()) {
+              this.items.push(this.allitems[i]);
+            };
+          }
+        } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
+          for (let i = 0; i < this.allitems.length; i++) {
+            if (this.allitems[i].quality.toLowerCase() == this.selectedItem.toLowerCase() && this.allitems[i].brand.toLowerCase() == filterValue.toLowerCase()) {
+              this.items.push(this.allitems[i]);
+            };
+          }
+        }
       }
     } else {
-      console.log(filterValue);
-      console.log(this.allitems);
-      for (let i = 0; i < this.allitems.length; i++) {
-        if (this.allitems[i].model == this.selectedItem && this.allitems[i].brand == filterValue) {
-          this.items.push(this.allitems[i]);
-        } else if (this.selectedItem == "allproducts" && this.allitems[i].brand == filterValue) {
-          this.items.push(this.allitems[i]);
-        };
-      };
+      if (this.selectedItem == 'allproducts') {
+        this.items = this.allitems.slice();
+      } else {
+        if (this.selectedItem == 'StandAlone') {
+          for (let i = 0; i < this.allitems.length; i++) {
+            if (this.allitems[i].type == 'Stand Alone') {
+              this.items.push(this.allitems[i]);
+            };
+          }
+        } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
+          for (let i = 0; i < this.allitems.length; i++) {
+            if (this.allitems[i].quality.toLowerCase() == this.selectedItem.toLowerCase()) {
+              this.items.push(this.allitems[i]);
+            };
+          }
+        }
+      }
     }
   }
 
   getBrands() {
     this.commonService.getBrands().subscribe(
-      data => this.brands = data
+      data => {
+        console.log('brands', data);
+        this.brands = data;
+      }
     );
   }
 
