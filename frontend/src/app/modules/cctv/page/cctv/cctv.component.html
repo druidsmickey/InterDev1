@@ -8,7 +8,7 @@
     <mat-label>CCTV Brand</mat-label>
     <mat-select (selectionChange)="applyFilter($event.value)">
         <mat-option value="allbrands">
-            Allbrands
+            All Brands
         </mat-option>
         <mat-option *ngFor="let brand of brands" [value]="brand.id">
             {{brand.value}}

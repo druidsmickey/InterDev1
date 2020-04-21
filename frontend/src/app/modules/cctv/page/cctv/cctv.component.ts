@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CommonService } from '../../../../common.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-cctv',
@@ -47,17 +48,9 @@ export class CctvComponent implements OnInit {
       this.items = this.allitems.slice();
     } else {
       if (this.selectedItem == 'StandAlone') {
-        for (let i = 0; i < this.allitems.length; i++) {
-          if (this.allitems[i].type == 'Stand Alone') {
-            this.items.push(this.allitems[i]);
-          };
-        }
+        this.items = _.filter(this.allitems, { type: 'Stand Alone' });
       } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-        for (let i = 0; i < this.allitems.length; i++) {
-          if (this.allitems[i].quality.toLowerCase() == this.selectedItem.toLowerCase()) {
-            this.items.push(this.allitems[i]);
-          };
-        }
+        this.items = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
       }
     }
   }
@@ -66,24 +59,12 @@ export class CctvComponent implements OnInit {
     this.items = [];
     if (filterValue !== 'allbrands') {
       if (this.selectedItem == 'allproducts') {
-        for (let i = 0; i < this.allitems.length; i++) {
-          if (this.allitems[i].brand.toLowerCase() == filterValue.toLowerCase()) {
-            this.items.push(this.allitems[i]);
-          };
-        }
+        this.items = _.filter(this.allitems, item => item.brand.toLowerCase() == filterValue.toLowerCase());
       } else {
         if (this.selectedItem == 'StandAlone') {
-          for (let i = 0; i < this.allitems.length; i++) {
-            if (this.allitems[i].type == 'Stand Alone' && this.allitems[i].brand.toLowerCase() == filterValue.toLowerCase()) {
-              this.items.push(this.allitems[i]);
-            };
-          }
+          this.items = _.filter(this.allitems, item => item.type == 'Stand Alone' && item.brand.toLowerCase() == filterValue.toLowerCase());
         } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-          for (let i = 0; i < this.allitems.length; i++) {
-            if (this.allitems[i].quality.toLowerCase() == this.selectedItem.toLowerCase() && this.allitems[i].brand.toLowerCase() == filterValue.toLowerCase()) {
-              this.items.push(this.allitems[i]);
-            };
-          }
+          this.items = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase() && item.brand.toLowerCase() == filterValue.toLowerCase());
         }
       }
     } else {
@@ -91,17 +72,9 @@ export class CctvComponent implements OnInit {
         this.items = this.allitems.slice();
       } else {
         if (this.selectedItem == 'StandAlone') {
-          for (let i = 0; i < this.allitems.length; i++) {
-            if (this.allitems[i].type == 'Stand Alone') {
-              this.items.push(this.allitems[i]);
-            };
-          }
+          this.items = _.filter(this.allitems, { type: 'Stand Alone' });
         } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-          for (let i = 0; i < this.allitems.length; i++) {
-            if (this.allitems[i].quality.toLowerCase() == this.selectedItem.toLowerCase()) {
-              this.items.push(this.allitems[i]);
-            };
-          }
+          this.items = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
         }
       }
     }
