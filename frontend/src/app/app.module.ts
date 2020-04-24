@@ -23,7 +23,7 @@ import { AppPipe } from './app.pipe';
     HeaderComponent,
     FooterComponent,
     AuthLayoutComponent,
-    AppPipe
+    AppPipe,
   ],
   imports: [
     FormsModule,

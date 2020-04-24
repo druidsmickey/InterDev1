@@ -16,7 +16,7 @@
     </mat-select>
 </mat-form-field>
 
-<mat-table [dataSource]="items" matSort class="spacing">
+<mat-table [dataSource]="filterItems" matSort class="spacing">
     <ng-container matColumnDef="Brand">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.brand}} </mat-cell>

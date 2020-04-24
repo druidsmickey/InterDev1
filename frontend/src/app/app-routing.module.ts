@@ -44,6 +44,11 @@ const routes: Routes = [
           import('./modules/contactus/contactus.module').then(m => m.ContactusModule)
       },
       {
+        path: 'Accessory',
+        loadChildren: () =>
+          import('./modules/accessory/accessory.module').then(m => m.AccessoryModule)
+      },
+      {
         path: 'AdminComponent',
         loadChildren: () =>
           import('./modules/admin/admin.module').then(m => m.AdminModule)

@@ -1,0 +1,24 @@
+<mat-table [dataSource]="filterItems" matSort class="spacing">
+    <ng-container matColumnDef="Brand">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.brand}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Model">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

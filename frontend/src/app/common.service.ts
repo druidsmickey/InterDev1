@@ -17,38 +17,43 @@ export class CommonService {
  	constructor(private http: HttpClient) {}
 
   getBrands() {
-    console.log('common.service getBrands');
+    // console.log('common.service getBrands');
     return this.http.get(`${this.uri}/data/brand`);
   }
 
   getCCTVs() {
-    console.log('common.service getCCTVs');
+    // console.log('common.service getCCTVs');
     return this.http.get(`${this.uri}/data/cctv`);
   }
 
+  getAccessory() {
+    // console.log('common.service getAccessory');
+    return this.http.get(`${this.uri}/data/accessory`);
+  }
+
   getRecorders() {
-    console.log('common.service getRecorders');
+    // console.log('common.service getRecorders');
     return this.http.get(`${this.uri}/data/recorder`);
   }
 
   addCCTVs(cctvs) {
-    console.log('common.service addCCTV', cctvs);
+    // console.log('common.service addCCTV', cctvs);
     return this.http.post(`${this.uri}/data/addcctvs`, cctvs);
     // return this.http.post(`${this.uri}/addcctvs`, JSON.stringify(cctvs), this.options);
   }
 
   addRecorders(recoders) {
-    console.log('common.service addRecorders', recoders);
+    // console.log('common.service addRecorders', recoders);
     return this.http.post(`${this.uri}/data/addrecorders`, recoders);
   }
 
   login(auth) {
-    console.log('common.service login', auth);
+    // console.log('common.service login', auth);
     return this.http.post(`${this.uri}/auth/login`, auth);
   }
 
   register(auth) {
-    console.log('common.service register', auth);
+    // console.log('common.service register', auth);
     return this.http.post(`${this.uri}/auth/register`, auth);
   }
 }

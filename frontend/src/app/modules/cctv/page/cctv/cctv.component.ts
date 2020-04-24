@@ -13,9 +13,12 @@ export class CctvComponent implements OnInit {
   private allitems : any = [];
   private displayedColumns = [];
   private selectedItem: any = {};
-  private items : any = [];
+  private filterItems : any = [];
   private testbrands  : any = [];
   private brands  : any = [];
+  private models  : any = [];
+  private qualities  : any = [];
+  private types  : any = [];
   private cctvs = [];
   orderBrand = "value"; //sorting
   ascending = true; //sorting
@@ -23,8 +26,8 @@ export class CctvComponent implements OnInit {
   constructor(private commonService: CommonService) {}
 
   ngOnInit() {
-    this.getBrands();
     this.getCCTVs();
+    this.getBrands();
 
   	this.cctvtabs = [
       { menu: 'All products', id: 'allproducts' },
@@ -34,47 +37,45 @@ export class CctvComponent implements OnInit {
       { menu: 'Kits', id: 'Kits' },
       { menu: 'Design your System', id: 'design'}
     ];
-
-    console.log(this.cctvs);
     this.displayedColumns = ['Brand', 'Model', 'Quality', 'Transmission', 'Description', 'Price'];
-    this.items = this.allitems.slice();
+    this.filterItems = this.allitems.slice();
     this.selectedItem = 'allproducts';
 
   }
 
   onClick() {
-    this.items = [];
+    this.filterItems = [];
     if (this.selectedItem == 'allproducts') {
-      this.items = this.allitems.slice();
+      this.filterItems = this.allitems.slice();
     } else {
       if (this.selectedItem == 'StandAlone') {
-        this.items = _.filter(this.allitems, { type: 'Stand Alone' });
+        this.filterItems = _.filter(this.allitems, { type: 'Stand Alone' });
       } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-        this.items = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
+        this.filterItems = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
       }
     }
   }
 
   applyFilter(filterValue:string) {
-    this.items = [];
+    this.filterItems = [];
     if (filterValue !== 'allbrands') {
       if (this.selectedItem == 'allproducts') {
-        this.items = _.filter(this.allitems, item => item.brand.toLowerCase() == filterValue.toLowerCase());
+        this.filterItems = _.filter(this.allitems, item => item.brand.toLowerCase() == filterValue.toLowerCase());
       } else {
         if (this.selectedItem == 'StandAlone') {
-          this.items = _.filter(this.allitems, item => item.type == 'Stand Alone' && item.brand.toLowerCase() == filterValue.toLowerCase());
+          this.filterItems = _.filter(this.allitems, item => item.type == 'Stand Alone' && item.brand.toLowerCase() == filterValue.toLowerCase());
         } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-          this.items = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase() && item.brand.toLowerCase() == filterValue.toLowerCase());
+          this.filterItems = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase() && item.brand.toLowerCase() == filterValue.toLowerCase());
         }
       }
     } else {
       if (this.selectedItem == 'allproducts') {
-        this.items = this.allitems.slice();
+        this.filterItems = this.allitems.slice();
       } else {
         if (this.selectedItem == 'StandAlone') {
-          this.items = _.filter(this.allitems, { type: 'Stand Alone' });
+          this.filterItems = _.filter(this.allitems, { type: 'Stand Alone' });
         } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-          this.items = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
+          this.filterItems = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
         }
       }
     }
@@ -83,7 +84,7 @@ export class CctvComponent implements OnInit {
   getBrands() {
     this.commonService.getBrands().subscribe(
       data => {
-        console.log('brands', data);
+        // console.log('brands', data);
         this.brands = data;
       }
     );
@@ -91,10 +92,28 @@ export class CctvComponent implements OnInit {
 
   getCCTVs() {
     this.commonService.getCCTVs().subscribe(
-      data => {
+      (data: any) => {
         this.allitems = data;
-        this.items = data;
-        console.log('data', data);
+        this.filterItems = data;
+        this.brands = _.uniqBy(data, 'brand').map((item: any) => item.brand);
+        this.models = _.uniqBy(data, 'model').map((item: any) => item.model);
+        this.qualities = _.uniqBy(data, 'quality').map((item: any) => item.quality);
+        this.types = _.uniqBy(data, 'type').map((item: any) => item.type);
+        // console.log(this.brands);
+        this.commonService.getAccessory().subscribe(
+          (data: any) => {
+            this.filterItems = this.filterItems.concat(data);
+            this.brands = this.brands.concat(_.uniqBy(data, 'brand').map((item: any) => item.brand));
+
+            this.commonService.getRecorders().subscribe(
+              (data: any) => {
+                this.filterItems = this.filterItems.concat(data);
+                this.brands = this.brands.concat(_.uniqBy(data, 'brand').map((item: any) => item.brand));
+              }
+            )
+
+          }
+        );
       }
     );
   }
