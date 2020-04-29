@@ -15,17 +15,17 @@ export class ItemsComponent implements OnInit {
   private brand = new FormControl('',Validators.required);
   private model = new FormControl('',Validators.required);
   private quality = new FormControl('',Validators.required);
-  private type = new FormControl('',Validators.required);
-  private lens = new FormControl('',Validators.required);
-  private lenstype = new FormControl('',Validators.required);
+  private type = new FormControl('');
+  private lens = new FormControl('');
+  private lenstype = new FormControl('');
   private transmission = new FormControl('',Validators.required);
-  private protection = new FormControl('',Validators.required);
-  private ir = new FormControl('',Validators.required);
-  private audioin = new FormControl('',Validators.required);
-  private powersupply = new FormControl('',Validators.required);
-  private link = new FormControl('',Validators.required);
+  private protection = new FormControl('');
+  private ir = new FormControl('');
+  private audioin = new FormControl('');
+  private powersupply = new FormControl('');
+  private link = new FormControl('');
   private price = new FormControl('',Validators.required);
-  private featured = new FormControl('',Validators.required);
+  private featured = new FormControl('');
 
 	constructor(private commonService: CommonService, private formBuilder: FormBuilder) {}
 
@@ -51,8 +51,9 @@ export class ItemsComponent implements OnInit {
 	addCCTVs() {
 		this.commonService.addCCTVs(this.myForm.value).subscribe(
 			(res: any) => {
-				let newItem = res.json();
-				this.items.push(newItem);
+        alert("Added successfully")
+				console.log(res);
+				// this.items.push(newItem);
 				this.myForm.reset();
 			},
 			(error: any) => console.log(error)

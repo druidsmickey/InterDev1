@@ -10,6 +10,8 @@ router.post('/addrecorders', controller.addrecorders);
 router.get('/accessory', controller.accessory);
 router.post('/addaccessory', controller.addaccessory);
 
+router.get('/images', controller.images);
+
 router.get('/brand', controller.brand);
 
 module.exports = router;

@@ -2,6 +2,7 @@ const CCTVs = require('../../../models/cctv.js');
 const Recorder = require('../../../models/recorder.js');
 const Brands = require('../../../models/brands.js');
 const Accessory = require('../../../models/accessory.js');
+const Images = require('../../../models/images.js');
 
 exports.brand = (req, res) => {
   Brands.find({}, (err, docs) => {
@@ -75,6 +76,16 @@ exports.addaccessory = (req, res) => {
     } else {
       console.log('obj', obj);
       res.status(200).json(obj);
+    }
+  });
+}
+
+exports.images = (req, res) => {
+  Images.find({}, (err, docs) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.json(docs);
     }
   });
 }

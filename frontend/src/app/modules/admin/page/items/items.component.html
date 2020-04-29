@@ -1,6 +1,7 @@
 <p>items works!</p>
-<form [formGroup]="myForm" (ngSubmit)="addCCTVs()" novalidate>
+<form [formGroup]="myForm" (ngSubmit)="addCCTVs()">
     <div class="example-container">
+        <input type="file" name="file" id="input-files" class="form-control-file border" />
         <mat-form-field>
             <input matInput placeholder="brand" formControlName="brand">
         </mat-form-field>

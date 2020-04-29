@@ -20,6 +20,9 @@ export class CctvComponent implements OnInit {
   private qualities  : any = [];
   private types  : any = [];
   private cctvs = [];
+  private images = [];
+  private temp = [];
+  private imageSrc = "";
   orderBrand = "value"; //sorting
   ascending = true; //sorting
 
@@ -28,6 +31,7 @@ export class CctvComponent implements OnInit {
   ngOnInit() {
     this.getCCTVs();
     this.getBrands();
+    this.getImages();
 
   	this.cctvtabs = [
       { menu: 'All products', id: 'allproducts' },
@@ -114,6 +118,15 @@ export class CctvComponent implements OnInit {
 
           }
         );
+      }
+    );
+  }
+
+  getImages() {
+    this.commonService.getImages().subscribe(
+      (data: any) => {
+        this.images = data.map((item: any) => item.data);
+        this.temp = this.images[0];
       }
     );
   }

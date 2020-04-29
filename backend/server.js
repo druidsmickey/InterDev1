@@ -26,6 +26,14 @@ app.listen(8080, () => {
   console.log('Listening o port 8080');
 });
 
-// app.use('/', express.static(__dirname + '/dist/intersky'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
+// const express = require("express");
+// const app = express();
+// const initRoutes = require("./routes/web");
+
+// app.use(express.urlencoded({ extended: true }));
+// initRoutes(app);
+
+// let port = 3000;
+// app.listen(port, () => {
+//   console.log(`Running at localhost:${port}`);
+// });

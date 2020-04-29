@@ -47,6 +47,10 @@ export class CommonService {
     return this.http.post(`${this.uri}/data/addrecorders`, recoders);
   }
 
+  getImages() {
+    return this.http.get(`${this.uri}/data/images`);
+  }
+
   login(auth) {
     // console.log('common.service login', auth);
     return this.http.post(`${this.uri}/auth/login`, auth);
