@@ -54,32 +54,48 @@ export class CctvComponent implements OnInit {
     } else {
       if (this.selectedItem == 'StandAlone') {
         this.filterItems = _.filter(this.allitems, { type: 'Stand Alone' });
-      } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-        this.filterItems = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
+      } 
+      else if (this.selectedItem == '720P') {
+        this.filterItems = _.filter(this.allitems, { quality: '720P' });
       }
+      else if (this.selectedItem == '1080P') {
+        this.filterItems = _.filter(this.allitems, { quality: '1080P' });
+      }
+      // else if (this.selectedItem == '720P' || this.selectedItem == '1080P') {
+      //   this.filterItems = _.filter(this.allitems, item => item.quality == this.selectedItem );
+      // }
     }
   }
 
   applyFilter(filterValue:string) {
+    // console.log(filterValue);
     this.filterItems = [];
     if (filterValue !== 'allbrands') {
       if (this.selectedItem == 'allproducts') {
-        this.filterItems = _.filter(this.allitems, item => item.brand.toLowerCase() == filterValue.toLowerCase());
+        this.filterItems = _.filter(this.allitems, item => item.brand  == filterValue );
       } else {
         if (this.selectedItem == 'StandAlone') {
-          this.filterItems = _.filter(this.allitems, item => item.type == 'Stand Alone' && item.brand.toLowerCase() == filterValue.toLowerCase());
-        } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-          this.filterItems = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase() && item.brand.toLowerCase() == filterValue.toLowerCase());
+          this.filterItems = _.filter(this.allitems, item => item.type == 'Stand Alone' && item.brand  == filterValue );
+        } else if (this.selectedItem == '720P' || this.selectedItem  == '1080P') {
+          this.filterItems = _.filter(this.allitems, item => item.quality  == this.selectedItem  &&  item.brand  == filterValue );
         }
       }
-    } else {
+    } 
+    else {
       if (this.selectedItem == 'allproducts') {
         this.filterItems = this.allitems.slice();
       } else {
         if (this.selectedItem == 'StandAlone') {
           this.filterItems = _.filter(this.allitems, { type: 'Stand Alone' });
-        } else if (this.selectedItem.toLowerCase() == '720p' || this.selectedItem.toLowerCase() == '1080p') {
-          this.filterItems = _.filter(this.allitems, item => item.quality.toLowerCase() == this.selectedItem.toLowerCase());
+        } 
+        // else if (this.selectedItem == '720P') {
+        //   this.filterItems = _.filter(this.allitems, { quality: '720P' });
+        // }
+        // else if (this.selectedItem == '1080P') {
+        //   this.filterItems = _.filter(this.allitems, { quality: '1080P' });
+        // }
+        else if (this.selectedItem  == '720P' || this.selectedItem  == '1080P') {
+          this.filterItems = _.filter(this.allitems, item => item.quality  == this.selectedItem );
         }
       }
     }
@@ -88,7 +104,6 @@ export class CctvComponent implements OnInit {
   getBrands() {
     this.commonService.getBrands().subscribe(
       data => {
-        // console.log('brands', data);
         this.brands = data;
       }
     );
@@ -99,7 +114,6 @@ export class CctvComponent implements OnInit {
       (data: any) => {
         this.allitems = data;
         this.filterItems = data;
-        this.brands = _.uniqBy(data, 'brand').map((item: any) => item.brand);
         this.models = _.uniqBy(data, 'model').map((item: any) => item.model);
         this.qualities = _.uniqBy(data, 'quality').map((item: any) => item.quality);
         this.types = _.uniqBy(data, 'type').map((item: any) => item.type);
@@ -107,12 +121,13 @@ export class CctvComponent implements OnInit {
         this.commonService.getAccessory().subscribe(
           (data: any) => {
             this.filterItems = this.filterItems.concat(data);
-            this.brands = this.brands.concat(_.uniqBy(data, 'brand').map((item: any) => item.brand));
-
+            this.allitems = this.allitems.concat(data);
+            console.log(this.brands);
             this.commonService.getRecorders().subscribe(
               (data: any) => {
                 this.filterItems = this.filterItems.concat(data);
-                this.brands = this.brands.concat(_.uniqBy(data, 'brand').map((item: any) => item.brand));
+                this.allitems = this.allitems.concat(data);
+                // console.log(this.brands);
               }
             )
 
