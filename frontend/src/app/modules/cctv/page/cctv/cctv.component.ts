@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonService } from '../../../../common.service';
 import * as _ from 'lodash';
 
@@ -26,22 +27,21 @@ export class CctvComponent implements OnInit {
   orderBrand = "value"; //sorting
   ascending = true; //sorting
 
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService, private router: Router) {}
 
   ngOnInit() {
     this.getCCTVs();
     this.getBrands();
-    this.getImages();
+    // this.getImages();
 
   	this.cctvtabs = [
       { menu: 'All products', id: 'allproducts' },
       { menu: 'Stand Alone', id: 'StandAlone' },
       { menu: '720P', id: '720P' },
       { menu: '1080P', id: '1080P' },
-      { menu: 'Kits', id: 'Kits' },
-      { menu: 'Design your System', id: 'design'}
+      { menu: 'Kits', id: 'Kits' }
     ];
-    this.displayedColumns = ['Brand', 'Model', 'Quality', 'Transmission', 'Description', 'Price'];
+    this.displayedColumns = ['Image', 'Brand', 'Model', 'Quality', 'Transmission', 'Description', 'Price'];
     this.filterItems = this.allitems.slice();
     this.selectedItem = 'allproducts';
 
@@ -117,17 +117,17 @@ export class CctvComponent implements OnInit {
         this.models = _.uniqBy(data, 'model').map((item: any) => item.model);
         this.qualities = _.uniqBy(data, 'quality').map((item: any) => item.quality);
         this.types = _.uniqBy(data, 'type').map((item: any) => item.type);
-        // console.log(this.brands);
+        // console.log(this.filterItems);
         this.commonService.getAccessory().subscribe(
           (data: any) => {
             this.filterItems = this.filterItems.concat(data);
             this.allitems = this.allitems.concat(data);
-            console.log(this.brands);
+            // console.log(this.brands);
             this.commonService.getRecorders().subscribe(
               (data: any) => {
                 this.filterItems = this.filterItems.concat(data);
                 this.allitems = this.allitems.concat(data);
-                // console.log(this.brands);
+                console.log(this.filterItems);
               }
             )
 
@@ -144,5 +144,10 @@ export class CctvComponent implements OnInit {
         this.temp = this.images[0];
       }
     );
+  }
+
+  btnClick() {
+    // console.log("aaa");
+    this.router.navigateByUrl('/System');
   }
 }

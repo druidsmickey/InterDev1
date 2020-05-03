@@ -1,0 +1,52 @@
+.category {
+  width: 100px;
+}
+
+.title {
+  margin: 50px;
+  display: flex;
+}
+
+.design_card {
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.iamgeGallery {
+  margin: 50px;
+  display: flex;
+  overflow-y: scroll;
+  padding: 5px;
+  width: 600px;
+}
+
+.detailCard {
+  cursor: pointer;
+  margin-right: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.item_image {
+  width: 100px;
+  height: 100px;
+}
+
+.wrap {
+  display: flex;
+}
+
+.wrap_image {
+  text-align: center;
+  border-style: solid;
+  max-height: 500px;
+  margin:10px;
+}
+
+.showImage {
+  padding: 10px;
+  width: 400px;
+  height: 400px;
+}

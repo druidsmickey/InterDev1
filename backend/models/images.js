@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const imagesSchema = mongoose.Schema({
   // files_id: s,
-  data: Buffer,
-  n: Number
+  path: String,
+  caption: String
 });
 
 module.exports = mongoose.model('images', imagesSchema);

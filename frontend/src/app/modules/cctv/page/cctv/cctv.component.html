@@ -14,8 +14,18 @@
             {{brand.value}}
         </mat-option>
     </mat-select>
+    
 </mat-form-field>
+
+<button mat-flat-button color="accent" (click)="btnClick();">Design Your System</button>
+
 <mat-table [dataSource]="filterItems" matSort class="spacing">
+
+    <ng-container matColumnDef="Image">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+        <mat-cell *matCellDef="let element" style="padding:20px !important"> <img src= {{element.image}} alt="Avatar" class="avatar_image"/></mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Brand">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.brand}} </mat-cell>

@@ -1,0 +1,61 @@
+<div class="wrap">
+  <div class="wrap_image">
+    <div><img src={{detailImage}}  class="showImage" alt="detailImage"></div>
+    <div><button mat-flat-button color="primary">Add</button></div>
+  </div>
+  <div>
+    <div class="title">
+      <div class="design_card" (click)="loadAccessory()">
+        <img src='../../../../../assets/imgs/accessory.jpg' class="category">
+        <p>Accessories</p>
+      </div>
+      <div class="design_card" (click)="loadRecorder()">
+        <img src='../../../../../assets/imgs/recorder.png' class="category">
+        <p>Recorders</p>
+      </div>
+      <div class="design_card" (click)="loadCCTV()">
+        <img src='../../../../../assets/imgs/cctv.jpg' class="category">
+        <p>Others</p>
+      </div>
+    </div>
+    
+    <div class="iamgeGallery">
+      <div class="detailCard" *ngFor="let cat of items">
+        <img src={{cat.image}} class="item_image" alt="cctv" (click)="setImage(cat)">
+        <p>{{cat.model}}</p>
+        <p>{{cat.price}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort class="spacing">
+
+  <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> image </mat-header-cell>
+      <mat-cell *matCellDef="let element" style="padding:20px !important"> {{element.image}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="model">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Brand </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="count">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Quality </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.count}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Quality </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.total}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

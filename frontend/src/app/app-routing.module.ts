@@ -52,6 +52,11 @@ const routes: Routes = [
         path: 'AdminComponent',
         loadChildren: () =>
           import('./modules/admin/admin.module').then(m => m.AdminModule)
+      },
+      {
+        path: 'System',
+        loadChildren: () =>
+          import('./modules/system/system.module').then(m => m.SystemModule)
       }
     ]
   },
